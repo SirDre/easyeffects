@@ -206,7 +206,7 @@ class Model : public QAbstractListModel {
 
   auto getMap() -> QMap<QString, QString>;
 
-  Q_INVOKABLE auto getBaseName(const QString& name) -> QString;
+  Q_INVOKABLE QString getBaseName(const QString& name);
 
   Q_INVOKABLE QList<QString> getBaseNames();
   Q_INVOKABLE QString translate(const QString& baseName);

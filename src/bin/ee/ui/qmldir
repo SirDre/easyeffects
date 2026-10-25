@@ -1,0 +1,74 @@
+module ee.ui
+typeinfo easyeffects.qmltypes
+prefer :/qt/qml/ee/ui/
+AboutPage 8.0 contents/ui/AboutPage.qml
+Autogain 8.0 contents/ui/Autogain.qml
+Autotune 8.0 contents/ui/Autotune.qml
+Harmonizer 8.0 contents/ui/Harmonizer.qml
+BassEnhancer 8.0 contents/ui/BassEnhancer.qml
+BassLoudness 8.0 contents/ui/BassLoudness.qml
+BlocklistDialog 8.0 contents/ui/BlocklistDialog.qml
+singleton Common 8.0 contents/ui/Common.qml
+Compressor 8.0 contents/ui/Compressor.qml
+Convolver 8.0 contents/ui/Convolver.qml
+ConvolverImpulseDialog 8.0 contents/ui/ConvolverImpulseDialog.qml
+ConvolverSofaDialog 8.0 contents/ui/ConvolverSofaDialog.qml
+Crossfeed 8.0 contents/ui/Crossfeed.qml
+CrosstalkCanceller 8.0 contents/ui/CrosstalkCanceller.qml
+Crusher 8.0 contents/ui/Crusher.qml
+Crystalizer 8.0 contents/ui/Crystalizer.qml
+CrystalizerBand 8.0 contents/ui/CrystalizerBand.qml
+Deesser 8.0 contents/ui/Deesser.qml
+Delay 8.0 contents/ui/Delay.qml
+DeepFilterNet 8.0 contents/ui/DeepFilterNet.qml
+DelegateClientsList 8.0 contents/ui/DelegateClientsList.qml
+DelegateModulesList 8.0 contents/ui/DelegateModulesList.qml
+DelegatePluginsList 8.0 contents/ui/DelegatePluginsList.qml
+DelegateStreamsList 8.0 contents/ui/DelegateStreamsList.qml
+EchoCanceller 8.0 contents/ui/EchoCanceller.qml
+EeCard 8.0 contents/ui/EeCard.qml
+EeChart 8.0 contents/ui/EeChart.qml
+EeAudioLevel 8.0 contents/ui/EeAudioLevel.qml
+EeInputOutputGain 8.0 contents/ui/EeInputOutputGain.qml
+EeListSectionHeader 8.0 contents/ui/EeListSectionHeader.qml
+singleton EeMetersReset 8.0 contents/ui/EeMetersReset.qml
+EeProgressBar 8.0 contents/ui/EeProgressBar.qml
+EeSpinBox 8.0 contents/ui/EeSpinBox.qml
+EeSwitch 8.0 contents/ui/EeSwitch.qml
+Equalizer 8.0 contents/ui/Equalizer.qml
+HearingTestDialog 8.0 contents/ui/HearingTestDialog.qml
+MidSideEqualizer 8.0 contents/ui/MidSideEqualizer.qml
+EqualizerBand 8.0 contents/ui/EqualizerBand.qml
+EqualizerBandMenu 8.0 contents/ui/EqualizerBandMenu.qml
+Exciter 8.0 contents/ui/Exciter.qml
+Expander 8.0 contents/ui/Expander.qml
+Filter 8.0 contents/ui/Filter.qml
+Gate 8.0 contents/ui/Gate.qml
+LevelMeter 8.0 contents/ui/LevelMeter.qml
+Limiter 8.0 contents/ui/Limiter.qml
+Loudness 8.0 contents/ui/Loudness.qml
+Maximizer 8.0 contents/ui/Maximizer.qml
+MultibandCompressor 8.0 contents/ui/MultibandCompressor.qml
+MultibandGate 8.0 contents/ui/MultibandGate.qml
+Main 8.0 contents/ui/Main.qml
+MenuAddPlugins 8.0 contents/ui/MenuAddPlugins.qml
+PageStreamsEffects 8.0 contents/ui/PageStreamsEffects.qml
+Pitch 8.0 contents/ui/Pitch.qml
+PipeWirePage 8.0 contents/ui/PipeWirePage.qml
+PluginNotAvailable 8.0 contents/ui/PluginNotAvailable.qml
+PreferencesSheet 8.0 contents/ui/PreferencesSheet.qml
+LspPreMixDialog 8.0 contents/ui/LspPreMixDialog.qml
+PresetsDialog 8.0 contents/ui/PresetsDialog.qml
+PresetsAutoloadPage 8.0 contents/ui/PresetsAutoloadPage.qml
+PresetsLocalPage 8.0 contents/ui/PresetsLocalPage.qml
+PresetsCommunityPage 8.0 contents/ui/PresetsCommunityPage.qml
+Reverb 8.0 contents/ui/Reverb.qml
+RNNoise 8.0 contents/ui/RNNoise.qml
+ShortcutsSheet 8.0 contents/ui/ShortcutsSheet.qml
+Speex 8.0 contents/ui/Speex.qml
+StereoTools 8.0 contents/ui/StereoTools.qml
+TrayIcon 8.0 contents/ui/TrayIcon.qml
+singleton Validators 8.0 contents/ui/Validators.qml
+VoiceSuppressor 8.0 contents/ui/VoiceSuppressor.qml
+depends QtQuick
+

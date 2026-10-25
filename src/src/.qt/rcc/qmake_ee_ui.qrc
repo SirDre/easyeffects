@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/ee/ui">
+    <file alias="qmldir">/home/sr/VSCode/easyeffects/src/bin/ee/ui/qmldir</file>
+  </qresource>
+</RCC>
+
