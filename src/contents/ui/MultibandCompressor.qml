@@ -96,7 +96,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Solo") // qmllint disable
+                        text: i18nc("Audio isolation", "Solo") // qmllint disable
                         checkable: true
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"]
                         onTriggered: {
@@ -128,7 +128,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressionMode"]
                     editable: false
-                    model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")] // qmllint disable
+                    model: [i18nc("Compressor mode", "Downward"), i18nc("Compressor mode", "Upward"), i18nc("Compressor mode", "Boosting")] // qmllint disable
                     onActivated: idx => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressionMode"] = idx;
                     }
@@ -177,9 +177,6 @@ Kirigami.ScrollablePage {
                 id: bandControlsLayout
 
                 maximumColumns: 4
-                // The following is the minimumColumnWidth that contains
-                // all the spinboxes in the gainFrame without overflowing
-                // on the right border.
                 minimumColumnWidth: Kirigami.Units.gridUnit * 20
                 uniformCellWidths: true
 
@@ -188,15 +185,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Frequency") // qmllint disable
+                            text: i18n("Frequency Range") // qmllint disable
                         }
 
                         /**
@@ -228,16 +224,17 @@ Kirigami.ScrollablePage {
                         }
 
                         ColumnLayout {
+                            Layout.leftMargin: Kirigami.Units.smallSpacing * 3
+                            Layout.bottomMargin: Kirigami.Units.smallSpacing * 3
+
                             Controls.Label {
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: i18n("End") // qmllint disable
                             }
 
                             Controls.Label {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: Common.toLocaleLabel(multibandCompressorPage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
@@ -249,15 +246,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Attack") // qmllint disable
+                            text: i18nc("Compressor control", "Attack") // qmllint disable
                         }
 
                         EeSpinBox {
@@ -297,15 +293,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Release") // qmllint disable
+                            text: i18nc("Compressor control", "Release") // qmllint disable
                         }
 
                         EeSpinBox {
@@ -338,6 +333,21 @@ Kirigami.ScrollablePage {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"] = v;
                             }
                         }
+
+                        EeSpinBox {
+                            label: i18nc("Compressor control", "Hold") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "HoldTime")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "HoldTime")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "HoldTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: Units.ms
+                            onValueModified: v => {
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "HoldTime"] = v;
+                            }
+                        }
                     }
                 }
 
@@ -348,19 +358,18 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: bandControlsLayout.columns === 1 ? 1 : 3
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: bandControlsLayout.columns === 1 ? 1 : 3
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Gain") // qmllint disable
+                            text: i18n("Level") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Ratio") // qmllint disable
+                            label: i18nc("Compressor control", "Ratio") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             Layout.minimumWidth: Kirigami.Units.gridUnit * 6
@@ -375,7 +384,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Knee") // qmllint disable
+                            label: i18nc("Compressor control", "Knee") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             Layout.minimumWidth: Kirigami.Units.gridUnit * 6
@@ -392,7 +401,7 @@ Kirigami.ScrollablePage {
 
                         EeSpinBox {
                             id: bandMakeup
-                            label: i18n("Makeup") // qmllint disable
+                            label: i18nc("Gain level", "Makeup") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             Layout.minimumWidth: Kirigami.Units.gridUnit * 6
@@ -424,7 +433,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainType"]
                     editable: false
-                    model: [i18n("Internal"), i18n("External"), i18n("Link")] // qmllint disable
+                    model: [i18nc("Sidchain type", "Internal"), i18nc("Sidchain type", "External"), i18nc("Sidchain type", "Link")] // qmllint disable
                     onActivated: idx => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainType"] = idx;
                     }
@@ -435,7 +444,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainMode"]
                     editable: false
-                    model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
+                    model: [i18nc("Sidechain mode", "Peak"), i18nc("Sidechain mode", "RMS"), i18nc("Sidechain mode", "Low-pass"), i18nc("Sidechain mode", "SMA")] // qmllint disable
                     onActivated: idx => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainMode"] = idx;
                     }
@@ -446,7 +455,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainSource"]
                     editable: false
-                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")] // qmllint disable
+                    model: [i18nc("Sidechain source", "Middle"), i18nc("Sidechain source", "Side"), i18nc("Sidechain source", "Left"), i18nc("Sidechain source", "Right"), i18nc("Sidechain source", "Min"), i18nc("Sidechain source", "Max")] // qmllint disable
                     visible: !multibandCompressorPage.pluginDB.stereoSplit
                     onActivated: idx => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainSource"] = idx;
@@ -458,7 +467,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "StereoSplitSource"]
                     editable: false
-                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")] // qmllint disable
+                    model: [i18nc("Stereo source", "Left/Right"), i18nc("Stereo source", "Right/Left"), i18nc("Stereo source", "Mid/Side"), i18nc("Stereo source", "Side/Mid"), i18nc("Stereo source", "Min"), i18nc("Stereo source", "Max")] // qmllint disable
                     visible: multibandCompressorPage.pluginDB.stereoSplit
                     onActivated: idx => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "StereoSplitSource"] = idx;
@@ -497,7 +506,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSpinBox {
-                    label: i18n("Lookahead") // qmllint disable
+                    label: i18nc("Compressor control", "Lookahead") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
                     from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainLookahead")
@@ -514,7 +523,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Low-cut") // qmllint disable
+                        text: i18nc("Filter type", "Low-cut") // qmllint disable
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
                         onCheckedChanged: {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"] = checked;
@@ -539,7 +548,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("High-cut") // qmllint disable
+                        text: i18nc("Filter type", "High-cut") // qmllint disable
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
                         onCheckedChanged: {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"] = checked;
@@ -575,9 +584,22 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandCompressorPage.pluginDB.compressorMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear phase")] // qmllint disable
+                model: [i18nc("Compressor mode", "Classic"), i18nc("Compressor mode", "Modern"), i18nc("Compressor mode", "Linear phase")] // qmllint disable
                 onActivated: idx => {
                     multibandCompressorPage.pluginDB.compressorMode = idx;
+                }
+            }
+
+            FormCard.FormComboBoxDelegate {
+                id: slope
+
+                text: i18nc("Filter parameter", "Crossover slope") // qmllint disable
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: multibandCompressorPage.pluginDB.slope
+                editable: false
+                model: [`6 ${Units.dBoct}`, `12 ${Units.dBoct}`, `18 ${Units.dBoct}`, `24 ${Units.dBoct}`, `48 ${Units.dBoct}`, `72 ${Units.dBoct}`] // qmllint disable
+                onActivated: idx => {
+                    multibandCompressorPage.pluginDB.slope = idx;
                 }
             }
 
@@ -588,7 +610,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandCompressorPage.pluginDB.envelopeBoost
                 editable: false
-                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")] // qmllint disable
+                model: [i18nc("Sidechain boost", "None"), i18nc("Sidechain boost", "Pink BT"), i18nc("Sidechain boost", "Pink MT"), i18nc("Sidechain boost", "Brown BT"), i18nc("Sidechain boost", "Brown MT")] // qmllint disable
                 onActivated: idx => {
                     multibandCompressorPage.pluginDB.envelopeBoost = idx;
                 }
@@ -621,7 +643,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: dry
 
-                label: i18n("Dry") // qmllint disable
+                label: i18nc("Signal type", "Dry") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: multibandCompressorPage.pluginDB.getMinValue("dry")
@@ -639,7 +661,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: wet
 
-                label: i18n("Wet") // qmllint disable
+                label: i18nc("Signal type", "Wet") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: multibandCompressorPage.pluginDB.getMinValue("wet")
@@ -651,6 +673,23 @@ Kirigami.ScrollablePage {
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandCompressorPage.pluginDB.wet = v;
+                }
+            }
+
+            EeSpinBox {
+                id: dryWetBalance
+
+                label: i18n("Dry/Wet balance") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: multibandCompressorPage.pluginDB.getMinValue("dryWetBalance")
+                to: multibandCompressorPage.pluginDB.getMaxValue("dryWetBalance")
+                value: multibandCompressorPage.pluginDB.dryWetBalance
+                decimals: 1
+                stepSize: 0.1
+                unit: Units.percent
+                onValueModified: v => {
+                    multibandCompressorPage.pluginDB.dryWetBalance = v;
                 }
             }
         }
@@ -665,8 +704,8 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandCompressorPage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : "" // qmllint disable
-                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
+                        readonly property string bandTitleTag: multibandCompressorPage.pluginDB.viewSidechain ? i18n("Sidechain") : i18n("Controls") // qmllint disable
+                        text: `${i18nc("Number of the band", "Band %1", bandsListview.currentIndex + 1)} - ${bandTitleTag}` // qmllint disable
                         level: 2
                     }
 
@@ -799,7 +838,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Envelope") // qmllint disable
+                                text: i18nc("Compressor parameter", "Envelope") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -854,7 +893,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Curve") // qmllint disable
+                                text: i18nc("Compressor parameter", "Curve") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -925,7 +964,7 @@ Kirigami.ScrollablePage {
                         contentItem: RowLayout {
                             Controls.Label {
                                 Layout.fillWidth: true
-                                text: i18n("Band") + " " + (listItemDelegate.index + 1) // qmllint disable
+                                text: i18nc("Number of the band", "Band %1", listItemDelegate.index + 1) // qmllint disable
                             }
 
                             Controls.CheckBox {
@@ -962,7 +1001,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</b>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

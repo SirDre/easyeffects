@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -27,10 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -826,6 +826,8 @@
       
         
       
+        
+      
     
     
     
@@ -1401,6 +1403,34 @@
     
   
     Gate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="harmonizer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harmonizer
   
 
     
@@ -2214,6 +2244,15 @@
 
 <h1 id="deep-noise-remover">Deep Noise Remover</h1>
 <p>Advanced noise reduction is achieved using "DeepFilterNet" technology. This technology uses AI technology called deep learning to efficiently remove noise from audio signals, enabling higher quality noise suppression than conventional methods. This technology has several control parameters, which are explained below and how to set them.</p>
+<p><strong>Model</strong><br />
+Selects the noise reduction model. Each one must be installed separately.</p>
+<ul>
+<li>DeepFilterNet: requires <a href="https://github.com/Rikorose/DeepFilterNet">DeepFilterNet</a>.</li>
+<li>DPDFNet: requires <a href="https://github.com/Fovty/HushMic">HushMic</a>. The Attenuation Limit and Process as Mono controls apply to this model.</li>
+</ul>
+<p><strong>Process as Mono (DPDFNet only)</strong></p>
+<p>Averages the left and right input channels before resampling, processes the result with one model instance, and sends the same processed signal to both output channels. This can significantly reduce CPU usage for mono microphones that supply the same signal on both channels. It does not change the selected model or its noise reduction quality.</p>
+<p>This setting is off by default and is saved in presets. Enable it for mono speech input; leave it off when stereo separation matters. If only one input channel contains audio, averaging reduces its level by 6 dB. Opposite-polarity signals can cancel, so check the input channels before enabling it.</p>
 <p><strong>Attenuation Limit</strong><br />
 This parameter determines how much noise is attenuated. Higher values result in stronger noise reduction, but too high a value may also remove parts of the audio.</p>
 <ul>
@@ -2333,10 +2372,10 @@ Controls the intensity of the post-processing filter applied after the initial n
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.footer"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

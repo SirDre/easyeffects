@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -27,10 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -839,6 +839,8 @@
       
         
       
+        
+      
     
     
     
@@ -1401,6 +1403,34 @@
     
   
     Gate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugins/harmonizer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harmonizer
   
 
     
@@ -2549,6 +2579,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
+<td style="text-align: left;"><code>dryWetBalance</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>100</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
 <td style="text-align: left;">Enum</td>
 <td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
@@ -2576,6 +2612,12 @@
 <td style="text-align: left;"><code>threshold</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>-12</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>compressor</strong></td>
+<td style="text-align: left;"><code>hold</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
@@ -2995,7 +3037,7 @@
 <td style="text-align: left;"><strong>crystalizer</strong></td>
 <td style="text-align: left;"><code>intensityBand2</code></td>
 <td style="text-align: left;">Double</td>
-<td style="text-align: left;"><code>-2</code></td>
+<td style="text-align: left;"><code>0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>crystalizer</strong></td>
@@ -3230,6 +3272,18 @@
 <td style="text-align: left;"><code>outputGain</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>deepfilternet</strong></td>
+<td style="text-align: left;"><code>model</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>DeepFilterNet</code>, 1: <code>DPDFNet</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>deepfilternet</strong></td>
+<td style="text-align: left;"><code>monoProcessing</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>deepfilternet</strong></td>
@@ -3577,7 +3631,7 @@
 <td style="text-align: left;"><strong>equalizer</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
 <td style="text-align: left;">Enum</td>
-<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>)</small></td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>, 4: <code>MP FIR</code>, 5: <code>MP FFT</code>, 6: <code>MP SPM</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>equalizer</strong></td>
@@ -3707,6 +3761,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
+<td style="text-align: left;"><code>dryWetBalance</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>100</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
 <td style="text-align: left;">Enum</td>
 <td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>)</small></td>
@@ -3734,6 +3794,12 @@
 <td style="text-align: left;"><code>threshold</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>-12</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>expander</strong></td>
+<td style="text-align: left;"><code>hold</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
@@ -3901,7 +3967,7 @@
 <td style="text-align: left;"><strong>filter</strong></td>
 <td style="text-align: left;"><code>equalMode</code></td>
 <td style="text-align: left;">Enum</td>
-<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>)</small></td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>, 4: <code>MP FIR</code>, 5: <code>MP FFT</code>, 6: <code>MP SPM</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>filter</strong></td>
@@ -3983,6 +4049,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
+<td style="text-align: left;"><code>dryWetBalance</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>100</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
 <td style="text-align: left;">Enum</td>
 <td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
@@ -3998,6 +4070,12 @@
 <td style="text-align: left;"><code>release</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>100</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>gate</strong></td>
+<td style="text-align: left;"><code>hold</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -4160,6 +4238,72 @@
 <td style="text-align: left;"><code>linkToInput</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>-80.01</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>bypass</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>inputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>outputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>dryWet</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>63</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>intervalLeft</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>intervalRight</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>7</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>note</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>chord</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>chordMode</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>gainLeft</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>harmonizer</strong></td>
+<td style="text-align: left;"><code>gainRight</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>level_meter</strong></td>
@@ -4367,6 +4511,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>loudness</strong></td>
+<td style="text-align: left;"><code>compensate</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;"><code>clipping</code></td>
 <td style="text-align: left;">Bool</td>
 <td style="text-align: left;"><code>false</code></td>
@@ -4441,7 +4591,7 @@
 <td style="text-align: left;"><strong>midside_equalizer</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
 <td style="text-align: left;">Enum</td>
-<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>)</small></td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>, 4: <code>MP FIR</code>, 5: <code>MP FFT</code>, 6: <code>MP SPM</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>midside_equalizer</strong></td>
@@ -4511,6 +4661,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>dryWetBalance</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>100</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>viewSidechain</code></td>
 <td style="text-align: left;">Bool</td>
 <td style="text-align: left;"><code>false</code></td>
@@ -4538,6 +4694,12 @@
 <td style="text-align: left;"><code>envelopeBoost</code></td>
 <td style="text-align: left;">Enum</td>
 <td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>None</code>, 1: <code>Pink BT</code>, 2: <code>Pink MT</code>, 3: <code>Brown BT</code>, 4: <code>Brown MT</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>slope</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>4</code> <br><small>(Choices: 0: <code>6 dB/oct</code>, 1: <code>12 dB/oct</code>, 2: <code>18 dB/oct</code>, 3: <code>24 dB/oct</code>, 4: <code>48 dB/oct</code>, 5: <code>72 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
@@ -5579,6 +5741,54 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band0HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band1HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band2HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band3HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band4HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band5HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band6HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
+<td style="text-align: left;"><code>band7HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band0Ratio</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>1</code></td>
@@ -5849,6 +6059,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>dryWetBalance</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>100</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>viewSidechain</code></td>
 <td style="text-align: left;">Bool</td>
 <td style="text-align: left;"><code>false</code></td>
@@ -5876,6 +6092,12 @@
 <td style="text-align: left;"><code>envelopeBoost</code></td>
 <td style="text-align: left;">Enum</td>
 <td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>None</code>, 1: <code>Pink BT</code>, 2: <code>Pink MT</code>, 3: <code>Brown BT</code>, 4: <code>Brown MT</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>slope</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>4</code> <br><small>(Choices: 0: <code>6 dB/oct</code>, 1: <code>12 dB/oct</code>, 2: <code>18 dB/oct</code>, 3: <code>24 dB/oct</code>, 4: <code>48 dB/oct</code>, 5: <code>72 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
@@ -6773,6 +6995,54 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band0HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band1HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band2HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band3HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band4HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band5HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band6HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
+<td style="text-align: left;"><code>band7HoldTime</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band0Hysteresis</code></td>
 <td style="text-align: left;">Bool</td>
 <td style="text-align: left;"><code>false</code></td>
@@ -7337,6 +7607,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>autoRangeMinimumSpan</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>30</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
 <td style="text-align: left;"><code>logarithmicHorizontalAxis</code></td>
 <td style="text-align: left;">Bool</td>
 <td style="text-align: left;"><code>true</code></td>
@@ -7382,6 +7658,54 @@
 <td style="text-align: left;"><code>spectrumFpsCap</code></td>
 <td style="text-align: left;">Int</td>
 <td style="text-align: left;"><code>60</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>fftSize</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>3</code> <br><small>(Choices: 0: <code>s1024</code>, 1: <code>s2048</code>, 2: <code>s4096</code>, 3: <code>s8192</code>, 4: <code>s16384</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>zeroPadding</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>x1</code>, 1: <code>x2</code>, 2: <code>x4</code>, 3: <code>x8</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>windowFunction</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>rectangular</code>, 1: <code>hann</code>, 2: <code>hamming</code>, 3: <code>blackman</code>, 4: <code>blackmanHarris</code>, 5: <code>flatTop</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>attackTime</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>decayTime</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>minimumLevel</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>-90</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>maximumLevel</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>spectrum</strong></td>
+<td style="text-align: left;"><code>slope</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>speex</strong></td>
@@ -7720,10 +8044,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.footer"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

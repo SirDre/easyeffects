@@ -96,7 +96,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Solo") // qmllint disable
+                        text: i18nc("Audio isolation", "Solo") // qmllint disable
                         checkable: true
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"]
                         onTriggered: {
@@ -125,15 +125,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Frequency") // qmllint disable
+                            text: i18n("Frequency Range") // qmllint disable
                         }
 
                         /**
@@ -165,16 +164,17 @@ Kirigami.ScrollablePage {
                         }
 
                         ColumnLayout {
+                            Layout.leftMargin: Kirigami.Units.smallSpacing * 3
+                            Layout.bottomMargin: Kirigami.Units.smallSpacing * 3
+
                             Controls.Label {
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: i18n("End") // qmllint disable
                             }
 
                             Controls.Label {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
@@ -186,19 +186,18 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
                             text: i18n("Reaction") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Attack") // qmllint disable
+                            label: i18nc("Compressor control", "Attack") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "AttackTime")
@@ -213,7 +212,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Release") // qmllint disable
+                            label: i18nc("Compressor control", "Release") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "ReleaseTime")
@@ -226,6 +225,21 @@ Kirigami.ScrollablePage {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
                             }
                         }
+
+                        EeSpinBox {
+                            label: i18nc("Compressor control", "Hold") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "HoldTime")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "HoldTime")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HoldTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: Units.ms
+                            onValueModified: v => {
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "HoldTime"] = v;
+                            }
+                        }
                     }
                 }
 
@@ -234,15 +248,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Gain") // qmllint disable
+                            text: i18n("Level") // qmllint disable
                         }
 
                         EeSpinBox {
@@ -262,7 +275,7 @@ Kirigami.ScrollablePage {
 
                         EeSpinBox {
                             id: bandMakeup
-                            label: i18n("Makeup") // qmllint disable
+                            label: i18nc("Gain level", "Makeup") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "Makeup")
@@ -283,15 +296,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Curve") // qmllint disable
+                            text: i18nc("Compressor parameter", "Curve") // qmllint disable
                         }
 
                         EeSpinBox {
@@ -331,12 +343,11 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Button {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignCenter
                             text: i18n("Hysteresis") // qmllint disable
                             checkable: true
@@ -397,7 +408,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainType"]
                     editable: false
-                    model: [i18n("Internal"), i18n("External"), i18n("Link")] // qmllint disable
+                    model: [i18nc("Sidchain type", "Internal"), i18nc("Sidchain type", "External"), i18nc("Sidchain type", "Link")] // qmllint disable
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainType"] = idx;
                     }
@@ -408,7 +419,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainMode"]
                     editable: false
-                    model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
+                    model: [i18nc("Sidechain mode", "Peak"), i18nc("Sidechain mode", "RMS"), i18nc("Sidechain mode", "Low-pass"), i18nc("Sidechain mode", "SMA")] // qmllint disable
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainMode"] = idx;
                     }
@@ -419,7 +430,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainSource"]
                     editable: false
-                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")] // qmllint disable
+                    model: [i18nc("Sidechain source", "Middle"), i18nc("Sidechain source", "Side"), i18nc("Sidechain source", "Left"), i18nc("Sidechain source", "Right"), i18nc("Sidechain source", "Min"), i18nc("Sidechain source", "Max")] // qmllint disable
                     visible: !multibandGatePage.pluginDB.stereoSplit
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainSource"] = idx;
@@ -431,7 +442,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "StereoSplitSource"]
                     editable: false
-                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")] // qmllint disable
+                    model: [i18nc("Stereo source", "Left/Right"), i18nc("Stereo source", "Right/Left"), i18nc("Stereo source", "Mid/Side"), i18nc("Stereo source", "Side/Mid"), i18nc("Stereo source", "Min"), i18nc("Stereo source", "Max")] // qmllint disable
                     visible: multibandGatePage.pluginDB.stereoSplit
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "StereoSplitSource"] = idx;
@@ -470,7 +481,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSpinBox {
-                    label: i18n("Lookahead") // qmllint disable
+                    label: i18nc("Compressor control", "Lookahead") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
                     from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLookahead")
@@ -487,7 +498,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Low-cut") // qmllint disable
+                        text: i18nc("Filter type", "Low-cut") // qmllint disable
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
                         onCheckedChanged: {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"] = checked;
@@ -512,7 +523,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("High-cut") // qmllint disable
+                        text: i18nc("Filter type", "High-cut") // qmllint disable
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
                         onCheckedChanged: {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"] = checked;
@@ -548,9 +559,22 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandGatePage.pluginDB.gateMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear phase")] // qmllint disable
+                model: [i18nc("Compressor mode", "Classic"), i18nc("Compressor mode", "Modern"), i18nc("Compressor mode", "Linear phase")] // qmllint disable
                 onActivated: idx => {
                     multibandGatePage.pluginDB.gateMode = idx;
+                }
+            }
+
+            FormCard.FormComboBoxDelegate {
+                id: slope
+
+                text: i18nc("Filter parameter", "Crossover slope") // qmllint disable
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: multibandGatePage.pluginDB.slope
+                editable: false
+                model: [`6 ${Units.dBoct}`, `12 ${Units.dBoct}`, `18 ${Units.dBoct}`, `24 ${Units.dBoct}`, `48 ${Units.dBoct}`, `72 ${Units.dBoct}`] // qmllint disable
+                onActivated: idx => {
+                    multibandGatePage.pluginDB.slope = idx;
                 }
             }
 
@@ -561,7 +585,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandGatePage.pluginDB.envelopeBoost
                 editable: false
-                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")] // qmllint disable
+                model: [i18nc("Sidechain boost", "None"), i18nc("Sidechain boost", "Pink BT"), i18nc("Sidechain boost", "Pink MT"), i18nc("Sidechain boost", "Brown BT"), i18nc("Sidechain boost", "Brown MT")] // qmllint disable
                 onActivated: idx => {
                     multibandGatePage.pluginDB.envelopeBoost = idx;
                 }
@@ -594,7 +618,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: dry
 
-                label: i18n("Dry") // qmllint disable
+                label: i18nc("Signal type", "Dry") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: multibandGatePage.pluginDB.getMinValue("dry")
@@ -612,7 +636,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: wet
 
-                label: i18n("Wet") // qmllint disable
+                label: i18nc("Signal type", "Wet") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: multibandGatePage.pluginDB.getMinValue("wet")
@@ -624,6 +648,23 @@ Kirigami.ScrollablePage {
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandGatePage.pluginDB.wet = v;
+                }
+            }
+
+            EeSpinBox {
+                id: dryWetBalance
+
+                label: i18n("Dry/Wet balance") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: multibandGatePage.pluginDB.getMinValue("dryWetBalance")
+                to: multibandGatePage.pluginDB.getMaxValue("dryWetBalance")
+                value: multibandGatePage.pluginDB.dryWetBalance
+                decimals: 1
+                stepSize: 0.1
+                unit: Units.percent
+                onValueModified: v => {
+                    multibandGatePage.pluginDB.dryWetBalance = v;
                 }
             }
         }
@@ -638,8 +679,8 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : "" // qmllint disable
-                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
+                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? i18n("Sidechain") : i18n("Controls") // qmllint disable
+                        text: i18nc("Number of the band", "Band %1", bandsListview.currentIndex + 1) + ` - ${bandTitleTag}` // qmllint disable
                         level: 2
                     }
 
@@ -772,7 +813,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Envelope") // qmllint disable
+                                text: i18nc("Compressor parameter", "Envelope") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -827,7 +868,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Curve") // qmllint disable
+                                text: i18nc("Compressor parameter", "Curve") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -898,7 +939,7 @@ Kirigami.ScrollablePage {
                         contentItem: RowLayout {
                             Controls.Label {
                                 Layout.fillWidth: true
-                                text: i18n("Band") + " " + (listItemDelegate.index + 1) // qmllint disable
+                                text: i18nc("Number of the band", "Band %1", listItemDelegate.index + 1) // qmllint disable
                             }
 
                             Controls.CheckBox {
@@ -935,7 +976,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

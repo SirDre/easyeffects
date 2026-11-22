@@ -31,8 +31,6 @@ Kirigami.ApplicationWindow {
     required property string applicationId
     required property bool canUseSysTray
 
-    readonly property real maxOverlayHeight: height - header.height - footer.height
-
     // We need to set visible to false in order to fix an issue related to
     // --hide-window option. See #4491.
     visible: false
@@ -402,7 +400,7 @@ Kirigami.ApplicationWindow {
 
                 Controls.ToolButton {
                     icon.name: "multimedia-player-symbolic"
-                    text: i18n("Players") // qmllint disable
+                    text: i18nc("Applications reproducing audio", "Players") // qmllint disable
                     checkable: true
                     checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 0
                     display: segmentedButton.display
@@ -418,7 +416,7 @@ Kirigami.ApplicationWindow {
 
                 Controls.ToolButton {
                     icon.name: "media-record-symbolic"
-                    text: i18n("Recorders") // qmllint disable
+                    text: i18nc("Devices recording audio", "Recorders") // qmllint disable
                     checkable: true
                     checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 0
                     display: segmentedButton.display
@@ -466,7 +464,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Manual") // qmllint disable
+                        text: i18nc("Usage guide", "Manual") // qmllint disable
                         icon.name: "help-contents-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -510,11 +508,17 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    footer: Kirigami.InlineMessage {
+    // Overlay instead of footer: resizing the window layout while toolbars are being set up crashes Qt.
+    Kirigami.InlineMessage {
         id: statusMessage
 
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
+        parent: Controls.Overlay.overlay
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+            bottomMargin: Kirigami.Units.smallSpacing
+        }
+        width: Math.min(Kirigami.Units.gridUnit * 50, parent.width * 0.9)
         visible: false
         showCloseButton: true
     }

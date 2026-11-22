@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.mode
                         editable: false
-                        model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")] //qmllint disable
+                        model: [i18nc("Compressor mode", "Downward"), i18nc("Compressor mode", "Upward"), i18nc("Compressor mode", "Boosting")] //qmllint disable
                         onActivated: idx => {
                             compressorPage.pluginDB.mode = idx;
                         }
@@ -129,7 +129,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: ratio
 
-                        label: i18n("Ratio") // qmllint disable
+                        label: i18nc("Compressor control", "Ratio") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("ratio")
@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: knee
 
-                        label: i18n("Knee") // qmllint disable
+                        label: i18nc("Compressor control", "Knee") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("knee")
@@ -166,7 +166,7 @@ Kirigami.ScrollablePage {
             }
 
             EeCard {
-                title: i18n("Threshold and Time") // qmllint disable
+                title: i18n("Time and Threshold") // qmllint disable
 
                 GridLayout {
                     columns: 2
@@ -174,25 +174,9 @@ Kirigami.ScrollablePage {
                     rowSpacing: 0
 
                     EeSpinBox {
-                        id: threshold
-
-                        label: i18n("Attack") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("threshold")
-                        to: compressorPage.pluginDB.getMaxValue("threshold")
-                        value: compressorPage.pluginDB.threshold
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: Units.dB
-                        onValueModified: v => {
-                            compressorPage.pluginDB.threshold = v;
-                        }
-                    }
-
-                    EeSpinBox {
                         id: attack
 
+                        label: i18nc("Compressor control", "Attack") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("attack")
@@ -207,9 +191,41 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSpinBox {
+                        id: threshold
+
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("threshold")
+                        to: compressorPage.pluginDB.getMaxValue("threshold")
+                        value: compressorPage.pluginDB.threshold
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.dB
+                        onValueModified: v => {
+                            compressorPage.pluginDB.threshold = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: release
+
+                        label: i18nc("Compressor control", "Release") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("release")
+                        to: compressorPage.pluginDB.getMaxValue("release")
+                        value: compressorPage.pluginDB.release
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.ms
+                        onValueModified: v => {
+                            compressorPage.pluginDB.release = v;
+                        }
+                    }
+
+                    EeSpinBox {
                         id: releaseThreshold
 
-                        label: i18n("Release") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("releaseThreshold")
@@ -225,18 +241,19 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSpinBox {
-                        id: release
+                        id: hold
 
+                        label: i18nc("Compressor control", "Hold") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("release")
-                        to: compressorPage.pluginDB.getMaxValue("release")
-                        value: compressorPage.pluginDB.release
+                        from: compressorPage.pluginDB.getMinValue("hold")
+                        to: compressorPage.pluginDB.getMaxValue("hold")
+                        value: compressorPage.pluginDB.hold
                         decimals: 2
                         stepSize: 0.01
                         unit: Units.ms
                         onValueModified: v => {
-                            compressorPage.pluginDB.release = v;
+                            compressorPage.pluginDB.hold = v;
                         }
                     }
 
@@ -263,7 +280,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.sidechainType
                         editable: false
-                        model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")] // qmllint disable
+                        model: [i18nc("Sidechain type", "Feed-forward"), i18nc("Sidechain type", "Feed-back"), i18nc("Sidechain type", "External"), i18nc("Sidechain type", "Link")] // qmllint disable
                         onActivated: idx => {
                             compressorPage.pluginDB.sidechainType = idx;
                         }
@@ -302,7 +319,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.sidechainMode
                         editable: false
-                        model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
+                        model: [i18nc("Sidechain mode", "Peak"), i18nc("Sidechain mode", "RMS"), i18nc("Sidechain mode", "Low-pass"), i18nc("Sidechain mode", "SMA")] // qmllint disable
                         onActivated: idx => {
                             compressorPage.pluginDB.sidechainMode = idx;
                         }
@@ -316,7 +333,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.sidechainSource
                         editable: false
-                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")] // qmllint disable
+                        model: [i18nc("Sidechain source", "Middle"), i18nc("Sidechain source", "Side"), i18nc("Sidechain source", "Left"), i18nc("Sidechain source", "Right"), i18nc("Sidechain source", "Min"), i18nc("Sidechain source", "Max")] // qmllint disable
                         visible: !compressorPage.pluginDB.stereoSplit
                         onActivated: idx => {
                             compressorPage.pluginDB.sidechainSource = idx;
@@ -331,7 +348,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.stereoSplitSource
                         editable: false
-                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")] // qmllint disable
+                        model: [i18nc("Stereo source", "Left/Right"), i18nc("Stereo source", "Right/Left"), i18nc("Stereo source", "Mid/Side"), i18nc("Stereo source", "Side/Mid"), i18nc("Stereo source", "Min"), i18nc("Stereo source", "Max")] // qmllint disable
                         visible: compressorPage.pluginDB.stereoSplit
                         onActivated: idx => {
                             compressorPage.pluginDB.stereoSplitSource = idx;
@@ -391,7 +408,7 @@ Kirigami.ScrollablePage {
                         id: sidechainLookahead
 
                         Layout.columnSpan: 2
-                        label: i18n("Lookahead") // qmllint disable
+                        label: i18nc("Compressor control", "Lookahead") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("sidechainLookahead")
@@ -409,7 +426,7 @@ Kirigami.ScrollablePage {
                         id: hpfMode
 
                         verticalPadding: Kirigami.Units.largeSpacing
-                        text: i18n("High-pass") // qmllint disable
+                        text: i18nc("Filter type", "High-pass") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.hpfMode
                         editable: false
@@ -423,7 +440,7 @@ Kirigami.ScrollablePage {
                         id: lpfMode
 
                         verticalPadding: Kirigami.Units.largeSpacing
-                        text: i18n("Low-pass") // qmllint disable
+                        text: i18nc("Filter type", "Low-pass") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.lpfMode
                         editable: false
@@ -477,64 +494,82 @@ Kirigami.ScrollablePage {
             EeCard {
                 title: i18n("Output") // qmllint disable
 
-                EeSpinBox {
-                    id: dry
+                GridLayout {
+                    columns: 2
+                    rowSpacing: 0
+                    uniformCellWidths: true
 
-                    Layout.alignment: Qt.AlignTop
-                    label: i18n("Dry") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: compressorPage.pluginDB.getMinValue("dry")
-                    to: compressorPage.pluginDB.getMaxValue("dry")
-                    value: compressorPage.pluginDB.dry
-                    decimals: 2 // Required to show "-inf"
-                    stepSize: 0.01
-                    unit: Units.dB
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        compressorPage.pluginDB.dry = v;
+                    EeSpinBox {
+                        id: dry
+
+                        label: i18nc("Signal type", "Dry") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("dry")
+                        to: compressorPage.pluginDB.getMaxValue("dry")
+                        value: compressorPage.pluginDB.dry
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: Units.dB
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.dry = v;
+                        }
                     }
-                }
 
-                EeSpinBox {
-                    id: wet
+                    EeSpinBox {
+                        id: wet
 
-                    Layout.alignment: Qt.AlignTop
-                    label: i18n("Wet") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: compressorPage.pluginDB.getMinValue("wet")
-                    to: compressorPage.pluginDB.getMaxValue("wet")
-                    value: compressorPage.pluginDB.wet
-                    decimals: 2 // Required to show "-inf"
-                    stepSize: 0.01
-                    unit: Units.dB
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        compressorPage.pluginDB.wet = v;
+                        label: i18nc("Signal type", "Wet") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("wet")
+                        to: compressorPage.pluginDB.getMaxValue("wet")
+                        value: compressorPage.pluginDB.wet
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: Units.dB
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.wet = v;
+                        }
                     }
-                }
 
-                EeSpinBox {
-                    id: makeup
+                    EeSpinBox {
+                        id: dryWetBalance
 
-                    Layout.alignment: Qt.AlignTop
-                    label: i18n("Makeup") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: compressorPage.pluginDB.getMinValue("makeup")
-                    to: compressorPage.pluginDB.getMaxValue("makeup")
-                    value: compressorPage.pluginDB.makeup
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: Units.dB
-                    onValueModified: v => {
-                        compressorPage.pluginDB.makeup = v;
+                        Layout.columnSpan: 2
+                        label: i18n("Dry/Wet balance") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("dryWetBalance")
+                        to: compressorPage.pluginDB.getMaxValue("dryWetBalance")
+                        value: compressorPage.pluginDB.dryWetBalance
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: Units.percent
+                        onValueModified: v => {
+                            compressorPage.pluginDB.dryWetBalance = v;
+                        }
                     }
-                }
 
-                Item {
-                    Layout.fillHeight: true
+                    EeSpinBox {
+                        id: makeup
+
+                        Layout.columnSpan: 2
+                        label: i18nc("Gain level", "Makeup") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("makeup")
+                        to: compressorPage.pluginDB.getMaxValue("makeup")
+                        value: compressorPage.pluginDB.makeup
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.dB
+                        onValueModified: v => {
+                            compressorPage.pluginDB.makeup = v;
+                        }
+                    }
                 }
             }
 
@@ -774,7 +809,7 @@ Kirigami.ScrollablePage {
                         Layout.alignment: Qt.AlignHCenter
                         topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("Curve") // qmllint disable
+                        text: i18nc("Compressor parameter", "Curve") // qmllint disable
                     }
 
                     Controls.Label {
@@ -783,7 +818,7 @@ Kirigami.ScrollablePage {
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("Envelope") // qmllint disable
+                        text: i18nc("Compressor parameter", "Envelope") // qmllint disable
                     }
 
                     EeAudioLevel {
@@ -870,7 +905,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

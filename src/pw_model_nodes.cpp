@@ -124,35 +124,35 @@ Nodes::Nodes(QObject* parent)
   }
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this, [&]() { onOutputBlocklistChanged(); },
+      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this, [&] { onOutputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::blocklistUsesMediaNameChanged, this,
-      [&]() { onOutputBlocklistChanged(); }, Qt::QueuedConnection);
+      [&] { onOutputBlocklistChanged(); }, Qt::QueuedConnection);
 
   connect(
-      DbMain::self(), &DbMain::outputSinkBlocklistChanged, this, [&]() { onOutputSinkBlocklistChanged(); },
+      DbMain::self(), &DbMain::outputSinkBlocklistChanged, this, [&] { onOutputSinkBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this, [&]() { onOutputSinkBlocklistChanged(); },
+      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this, [&] { onOutputSinkBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this, [&]() { onInputBlocklistChanged(); },
+      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this, [&] { onInputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::blocklistUsesMediaNameChanged, this,
-      [&]() { onInputBlocklistChanged(); }, Qt::QueuedConnection);
-
-  connect(
-      DbMain::self(), &DbMain::inputSourceBlocklistChanged, this, [&]() { onInputSourceBlocklistChanged(); },
+      DbStreamInputs::self(), &DbStreamInputs::blocklistUsesMediaNameChanged, this, [&] { onInputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this, [&]() { onInputSourceBlocklistChanged(); },
+      DbMain::self(), &DbMain::inputSourceBlocklistChanged, this, [&] { onInputSourceBlocklistChanged(); },
+      Qt::QueuedConnection);
+
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this, [&] { onInputSourceBlocklistChanged(); },
       Qt::QueuedConnection);
 }
 
@@ -161,35 +161,37 @@ int Nodes::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> Nodes::roleNames() const {
-  return {{static_cast<int>(Roles::Id), "id"},
-          {static_cast<int>(Roles::Serial), "serial"},
-          {static_cast<int>(Roles::DeviceId), "deviceId"},
-          {static_cast<int>(Roles::Name), "name"},
-          {static_cast<int>(Roles::Description), "description"},
-          {static_cast<int>(Roles::MediaClass), "mediaClass"},
-          {static_cast<int>(Roles::MediaRole), "mediaRole"},
-          {static_cast<int>(Roles::AppName), "appName"},
-          {static_cast<int>(Roles::AppProcessId), "appProcessId"},
-          {static_cast<int>(Roles::AppProcessBinary), "appProcessBinary"},
-          {static_cast<int>(Roles::AppIconName), "appIconName"},
-          {static_cast<int>(Roles::MediaIconName), "mediaIconName"},
-          {static_cast<int>(Roles::DeviceIconName), "deviceIconName"},
-          {static_cast<int>(Roles::MediaName), "mediaName"},
-          {static_cast<int>(Roles::Format), "format"},
-          {static_cast<int>(Roles::ApplicationId), "applicationId"},
-          {static_cast<int>(Roles::Priority), "priority"},
-          {static_cast<int>(Roles::State), "nodeState"},
-          {static_cast<int>(Roles::Mute), "mute"},
-          {static_cast<int>(Roles::Connected), "connected"},
-          {static_cast<int>(Roles::NinputPorts), "nInputPorts"},
-          {static_cast<int>(Roles::NoutputPorts), "nOutputPorts"},
-          {static_cast<int>(Roles::Rate), "rate"},
-          {static_cast<int>(Roles::NvolumeChannels), "nVolumeChannels"},
-          {static_cast<int>(Roles::Latency), "latency"},
-          {static_cast<int>(Roles::Volume), "volume"},
-          {static_cast<int>(Roles::IsBlocklisted), "isBlocklisted"},
-          {static_cast<int>(Roles::DeviceRouteName), "deviceRouteName"},
-          {static_cast<int>(Roles::DeviceRouteDescription), "deviceRouteDescription"}};
+  return {
+      {static_cast<int>(Roles::Id), "id"},
+      {static_cast<int>(Roles::Serial), "serial"},
+      {static_cast<int>(Roles::DeviceId), "deviceId"},
+      {static_cast<int>(Roles::Name), "name"},
+      {static_cast<int>(Roles::Description), "description"},
+      {static_cast<int>(Roles::MediaClass), "mediaClass"},
+      {static_cast<int>(Roles::MediaRole), "mediaRole"},
+      {static_cast<int>(Roles::AppName), "appName"},
+      {static_cast<int>(Roles::AppProcessId), "appProcessId"},
+      {static_cast<int>(Roles::AppProcessBinary), "appProcessBinary"},
+      {static_cast<int>(Roles::AppIconName), "appIconName"},
+      {static_cast<int>(Roles::MediaIconName), "mediaIconName"},
+      {static_cast<int>(Roles::DeviceIconName), "deviceIconName"},
+      {static_cast<int>(Roles::MediaName), "mediaName"},
+      {static_cast<int>(Roles::Format), "format"},
+      {static_cast<int>(Roles::ApplicationId), "applicationId"},
+      {static_cast<int>(Roles::Priority), "priority"},
+      {static_cast<int>(Roles::State), "nodeState"},
+      {static_cast<int>(Roles::Mute), "mute"},
+      {static_cast<int>(Roles::Connected), "connected"},
+      {static_cast<int>(Roles::NinputPorts), "nInputPorts"},
+      {static_cast<int>(Roles::NoutputPorts), "nOutputPorts"},
+      {static_cast<int>(Roles::Rate), "rate"},
+      {static_cast<int>(Roles::NvolumeChannels), "nVolumeChannels"},
+      {static_cast<int>(Roles::Latency), "latency"},
+      {static_cast<int>(Roles::Volume), "volume"},
+      {static_cast<int>(Roles::IsBlocklisted), "isBlocklisted"},
+      {static_cast<int>(Roles::DeviceRouteName), "deviceRouteName"},
+      {static_cast<int>(Roles::DeviceRouteDescription), "deviceRouteDescription"},
+  };
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {
@@ -505,17 +507,17 @@ void Nodes::end_reset() {
 auto Nodes::node_state_to_qstring(const pw_node_state& state) -> QString {
   switch (state) {
     case PW_NODE_STATE_RUNNING:
-      return i18n("Running");
+      return i18nc("Status of PipeWire stream", "Running");
     case PW_NODE_STATE_SUSPENDED:
-      return i18n("Suspended");
+      return i18nc("Status of PipeWire stream", "Suspended");
     case PW_NODE_STATE_IDLE:
-      return i18n("Idle");
+      return i18nc("Status of PipeWire stream", "Idle");
     case PW_NODE_STATE_CREATING:
-      return i18n("Creating");
+      return i18nc("Status of PipeWire stream", "Creating");
     case PW_NODE_STATE_ERROR:
-      return i18n("Error");
+      return i18nc("Status of PipeWire stream", "Error");
     default:
-      return i18n("Unknown");
+      return i18nc("Status of PipeWire stream", "Unknown");
   }
 }
 
@@ -613,6 +615,40 @@ auto Nodes::get_nodes_by_device_id(const uint& id) -> QList<NodeInfo> {
   return nodes;
 }
 
+auto Nodes::app_is_blocklisted(const auto& blocklist, const auto& name, const auto& app_id, const auto& process_binary)
+    -> bool {
+  return std::ranges::any_of(blocklist, [&name, &app_id, &process_binary](const auto& blocklist_item) {
+    return name.startsWith(blocklist_item) || app_id.startsWith(blocklist_item) ||
+           process_binary.startsWith(blocklist_item);
+  });
+}
+
+auto Nodes::app_is_blocklisted_by_media_name(const auto& blocklist,
+                                             const auto& name,
+                                             const auto& media_name,
+                                             const auto& app_id,
+                                             const auto& process_binary) -> bool {
+  return std::ranges::any_of(blocklist, [&name, &media_name, &app_id, &process_binary](const auto& blocklist_item) {
+    // Get the index position of the first occurrence of ':'.
+    const auto colon = blocklist_item.indexOf(':');
+
+    if (colon == -1) {
+      // The blocklist item does not use the media name.
+      return false;
+    }
+
+    for (const auto& str : {name, app_id, process_binary}) {
+      // Check if the string starts with the first part of the blocklist item.
+      // Then compare the media name against the second part of the blocklist item.
+      if (str.startsWith(blocklist_item.first(colon)) && blocklist_item.sliced(colon + 1) == media_name) {
+        return true;
+      }
+    }
+
+    return false;
+  });
+}
+
 void Nodes::onOutputBlocklistChanged() {
   const auto blocklist = DbStreamOutputs::blocklist();
 
@@ -621,12 +657,12 @@ void Nodes::onOutputBlocklistChanged() {
       continue;
     }
 
-    auto is_blocklisted = blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
-                          blocklist.contains(list[n].app_process_binary);
-
-    if (DbStreamOutputs::blocklistUsesMediaName()) {
-      is_blocklisted = is_blocklisted || blocklist.contains(list[n].name + ":" + list[n].media_name);
-    }
+    const auto is_blocklisted =
+        !blocklist.isEmpty() &&
+        (DbStreamOutputs::blocklistUsesMediaName()
+             ? app_is_blocklisted_by_media_name(blocklist, list[n].name, list[n].media_name, list[n].application_id,
+                                                list[n].app_process_binary)
+             : app_is_blocklisted(blocklist, list[n].name, list[n].application_id, list[n].app_process_binary));
 
     if (is_blocklisted) {
       update_field(n, Roles::IsBlocklisted, true);
@@ -668,12 +704,12 @@ void Nodes::onInputBlocklistChanged() {
       continue;
     }
 
-    auto is_blocklisted = blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
-                          blocklist.contains(list[n].app_process_binary);
-
-    if (DbStreamInputs::blocklistUsesMediaName()) {
-      is_blocklisted = is_blocklisted || blocklist.contains(list[n].name + ":" + list[n].media_name);
-    }
+    const auto is_blocklisted =
+        !blocklist.isEmpty() &&
+        (DbStreamInputs::blocklistUsesMediaName()
+             ? app_is_blocklisted_by_media_name(blocklist, list[n].name, list[n].media_name, list[n].application_id,
+                                                list[n].app_process_binary)
+             : app_is_blocklisted(blocklist, list[n].name, list[n].application_id, list[n].app_process_binary));
 
     if (is_blocklisted) {
       update_field(n, Roles::IsBlocklisted, true);
